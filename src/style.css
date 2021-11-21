@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 /* CSS Custom Properties Definitions */
 
 :root {
@@ -11,7 +13,7 @@
   --maxWidth-3xl: 48rem;
   --maxWidth-4xl: 56rem;
   --maxWidth-full: "100%";
-  --maxWidth-wrapper: var(--maxWidth-2xl);
+  --maxWidth-wrapper: var(--maxWidth-3xl);
   --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem;
@@ -27,13 +29,9 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  --fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
-    Times, serif;
-  --font-body: var(--fontFamily-serif);
-  --font-heading: var(--fontFamily-sans);
+  --fontFamily:  -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Helvetica Neue", "Roboto", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif;
+  --font-body: var(--fontFamily);
+  --font-heading: var(--fontFamily);
   --fontWeight-normal: 400;
   --fontWeight-medium: 500;
   --fontWeight-semibold: 600;
@@ -54,12 +52,14 @@
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
-  --color-primary: #005b99;
+  --color-primary: #2e353f;
   --color-text: #2e353f;
   --color-text-light: #4f5969;
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
+  --tag-color: #f7f8fc;
+  --tag-highlight-color: darkgrey;
 }
 
 /* HTML elements */
@@ -75,6 +75,7 @@ html {
   font-size: var(--fontSize-root);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -306,6 +307,10 @@ a:focus {
   margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
 }
 
+.blog-post li {
+  margin-left: 1rem;
+}
+
 .blog-post header p {
   font-size: var(--fontSize-2);
   font-family: var(--font-heading);
@@ -315,11 +320,131 @@ a:focus {
   margin: var(--spacing-0);
 }
 
+.table-of-contents {
+  padding-left: 0;
+  border-left: 1px solid #efefef;
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+}
+
+.table-of-contents a {
+  text-decoration: none;
+  display: block;
+  padding: .125rem 0;
+  color: #ccc;
+  transition: all 50ms ease-in-out;
+}
+
+.table-of-contents a:hover,
+.table-of-contents a:focus {
+    color: #666;
+}
+
+.table-of-contents ul,
+.table-of-contents ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.table-of-contents li {
+  margin-left: 1rem;
+}
+
+.table-of-contents .active {
+  color: #333;
+  font-weight: 500;
+}
+
 .gatsby-highlight {
   margin-bottom: var(--spacing-8);
 }
 
+.toolbar .title {
+  position: relative;
+  display: inline;
+  font-size: xx-large;
+}
+
+.menu {
+  float: right;
+}
+
+.menu > * {
+  margin-left: 10px;
+}
+
+.menu > * {
+  font-size: xx-large;
+}
+
+.search-box {
+  border-color: grey;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 2px;
+  float: left;
+}
+
+.search-box:hover > .search-text {
+  width: 300px;
+  margin-left: 20px;
+}
+
+.search-button {
+  width: 30px;
+  height: 30px;
+  background: none;
+  border-radius: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition: all .4s;
+}
+
+.search-text {
+  background: none;
+  border: none;
+  float: left;
+  font-size: 16px;
+  line-height: 30px;
+  outline: none;
+  padding: 0;
+  transition: .4s;
+  width: 0;
+}
+
+.tag {
+  padding: 4px 8px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: darkgrey;
+  border-width: 2px;
+  margin-right: 5px;
+  line-height: 2.5;
+  background-color: var(--tag-color);
+  color: var(--tag-highlight-color);
+  white-space: nowrap;
+}
+
+.tag:link {
+  text-decoration: none;
+}
+
+.tag:hover {
+  background-color: var(--tag-highlight-color);
+  color: var(--tag-color);
+  transform: scale(1.2);
+}
+
 /* Media queries */
+
+@media screen and (max-width: 110rem) {
+  .table-of-contents {
+    display: none;
+  }
+}
 
 @media (max-width: 42rem) {
   blockquote {

@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import { formatTime } from "../util/formatter"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -44,7 +45,7 @@ const BlogIndex = ({ data, location }) => {
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{post.frontmatter.date}</small>
+                  <small>{formatTime(post.frontmatter.date)}</small>
                 </header>
                 <section>
                   <p
@@ -79,7 +80,7 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+          date
           title
           description
         }
